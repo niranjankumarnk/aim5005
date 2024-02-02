@@ -42,4 +42,18 @@ class MinMaxScaler:
 class StandardScaler:
     def __init__(self):
         self.mean = None
-        raise NotImplementedError
+        self.std = None
+        
+    def fit(self, x:np.ndarray) -> None:
+        """
+        Compute the mean and standard deviation of the input data.
+
+        Args:
+            x (np.ndarray): Input data.
+
+        Returns:
+            None
+        """
+        self.mean = np.mean(x, axis=0)
+        self.std = np.std(x, axis=0)
+
