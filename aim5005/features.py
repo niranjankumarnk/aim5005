@@ -57,7 +57,7 @@ class StandardScaler:
         self.mean = np.mean(x, axis=0)
         self.std = np.std(x, axis=0)
 
-def transform(self, x:np.ndarray) -> np.ndarray:
+    def transform(self, x:np.ndarray) -> np.ndarray:
         """
         Standardize the given vector.
         """
