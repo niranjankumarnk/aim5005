@@ -57,3 +57,22 @@ class StandardScaler:
         self.mean = np.mean(x, axis=0)
         self.std = np.std(x, axis=0)
 
+def transform(self, x:np.ndarray) -> np.ndarray:
+        """
+        Standardize the given vector.
+        """
+        return (x - self.mean) / self.std
+
+    def fit_transform(self, x:np.ndarray) -> np.ndarray:
+        """
+        Fit to data, then transform it.
+
+        Args:
+            x (np.ndarray): Input data.
+
+        Returns:
+            np.ndarray: Transformed data.
+        """
+        self.fit(x)
+        return self.transform(x)
+
