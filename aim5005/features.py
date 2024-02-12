@@ -29,9 +29,9 @@ class MinMaxScaler:
         """
         x = self._check_is_array(x)
         diff_max_min = self.maximum - self.minimum
-        
+        scaled_x = (x-self.minimum)/ diff_max_min
         # TODO: There is a bug here... Look carefully! 
-        return (x-self.minimum)/ diff_max_min
+        return scaled_x
     
     def fit_transform(self, x:list) -> np.ndarray:
         x = self._check_is_array(x)
