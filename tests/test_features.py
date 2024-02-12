@@ -15,8 +15,8 @@ class TestFeatures(TestCase):
         scaler = MinMaxScaler()
         data = [[-1, 2], [-0.5, 6], [0, 10], [1, 18]]
         scaler.fit(data)
-        assert (scaler.maximum == np.array([1., 18.])).all(), "scaler fit does not return maximum values [1., 18.] "
-        assert (scaler.minimum == np.array([-1., 2.])).all(), "scaler fit does not return maximum values [-1., 2.] " 
+        assert (scaler.maximum==np.array([1., 18.])).all(), "scaler fit does not return maximum values [1., 18.] "
+        assert (scaler.minimum==np.array([-1., 2.])).all(), "scaler fit does not return maximum values [-1., 2.] " 
         
         
     def test_min_max_scaler(self):
@@ -25,7 +25,7 @@ class TestFeatures(TestCase):
         scaler = MinMaxScaler()
         scaler.fit(data)
         result = scaler.transform(data)
-        assert (result == expected).all(), "Scaler transform does not return expected values. All Values should be between 0 and 1. Got: {}".format(result.reshape(1,-1))
+        assert (result ==  expected).all(), "Scaler transform does not return expected values. All Values should be between 0 and 1. Got: {}".format(result.reshape(1,-1))
         
     def test_min_max_scaler_single_value(self):
         data = [[-1, 2], [-0.5, 6], [0, 10], [1, 18]]
@@ -33,7 +33,7 @@ class TestFeatures(TestCase):
         scaler = MinMaxScaler()
         scaler.fit(data)
         result = scaler.transform([[2., 2.]]) 
-        assert (result == expected).all(), "Scaler transform does not return expected values. Expect [[1.5 0. ]]. Got: {}".format(result)
+        assert (result == expected).all(), "Scaler transform does not return expected values. Expect [[1.5 0. ]]. Got: {}".format(result.reshape(1,-1))
         
     def test_standard_scaler_init(self):
         scaler = StandardScaler()
@@ -52,7 +52,11 @@ class TestFeatures(TestCase):
         expected = np.array([[-1., -1.], [-1., -1.], [1., 1.], [1., 1.]])
         scaler.fit(data)
         result = scaler.transform(data)
+
         assert (result == expected).all(), "Scaler transform does not return expected values. Expect {}. Got: {}".format(expected.reshape(1,-1), result.reshape(1,-1))
+
+        assert (result==expected).all(), "Scaler transform does not return expected values. Expect {}. Got: {}".format(expected.reshape(1,-1), result.reshape(1,-1))
+
         
     def test_standard_scaler_single_value(self):
         data = [[0, 0], [0, 0], [1, 1], [1, 1]]
