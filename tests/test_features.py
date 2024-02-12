@@ -25,7 +25,7 @@ class TestFeatures(TestCase):
         scaler = MinMaxScaler()
         scaler.fit(data)
         result = scaler.transform(data)
-        assert np.allclose(result, expected), "Scaler transform does not return expected values. All Values should be between 0 and 1. Got: {}".format(result.reshape(1,-1))
+        assert np.allclose(result, expected), "Scaler transform does not return expected values. All Values should be between 0 and 1. Got: {}".format(result)
         
     def test_min_max_scaler_single_value(self):
         data = [[-1, 2], [-0.5, 6], [0, 10], [1, 18]]
